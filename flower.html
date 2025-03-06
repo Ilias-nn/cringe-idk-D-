@@ -322,4 +322,39 @@
 </html>
 
 <!-- Import Javascript -->
-<script src="main.js"></script>
+<script>
+    onload = () => {
+    const c = setTimeout(() => {
+      document.body.classList.remove("not-loaded");
+  
+      const text = '꽃과 선물을 보내고 싶었지만… 네 주소를 묻는 건 왠지 스토커 같아서 참았어 =)';
+      const titleElement = document.getElementById('title');
+      let index = 0;
+      let fontSize = 10; // Начальный размер текста
+  
+      function appendText() {
+        if (index < text.length) {
+          titleElement.innerHTML += text[index];
+          index++;
+  
+          // Увеличиваем размер шрифта постепенно
+          if (fontSize < 32) {
+            fontSize += 0.5; // Можно увеличить шаг, если надо быстрее
+            titleElement.style.fontSize = fontSize + 'px';
+          }
+  
+          setTimeout(appendText, 50);
+        }
+      }
+  
+      appendText();
+  
+      clearTimeout(c);
+    }, 1000);
+  };
+  
+  setTimeout(() => {
+    document.getElementById('corner-text').style.opacity = "1";
+  }, 5000);
+
+</script>
